@@ -126,19 +126,20 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        int check=0;
-        String email=jTextField1.getText();
-        String password=jPasswordField1.getText();
+    
+    public int login(String email ,String password)
+    {
+        int check =0;
         if(email.equals("")||password.equals("")){
             check=1;
             JOptionPane.showMessageDialog(null, "Every field is required");
+            return check;
         }
         else if(email.equals("khalifa")&& password.equals("khalifa")){
             check=1;
             setVisible(false);
             new adminHome().setVisible(true);
+            return check;
         }
         else{
             
@@ -152,23 +153,74 @@ public class Login extends javax.swing.JFrame {
                     {
                         setVisible(false);
                         new  home().setVisible(true);
+                        
                     }
                     else 
                     {
                             JOptionPane.showMessageDialog(null, "Wait for Admin Approval");
                     }
                 }
+                return check;
             }
             catch(Exception e) 
             {
                 JOptionPane.showMessageDialog(null, e);
+                
             }
                 
         }
         
-        if (check==0) 
+        return check;
+        
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String email=jTextField1.getText();
+        String password=jPasswordField1.getText();
+        int check=login(email, password);
+         if (check==0) 
             JOptionPane.showMessageDialog(null, "Incorrect Email or Password");
 
+        
+
+        
+        
+//        if(email.equals("")||password.equals("")){
+//            check=1;
+//            JOptionPane.showMessageDialog(null, "Every field is required");
+//        }
+//        else if(email.equals("khalifa")&& password.equals("khalifa")){
+//            check=1;
+//            setVisible(false);
+//            new adminHome().setVisible(true);
+//        }
+//        else{
+//            
+//            ResultSet rs = Select.getData("select * from users where email='"+email+"' and password='"+password+"'");
+//            try
+//            {
+//                if(rs.next())
+//                {
+//                    check=1;
+//                    if(rs.getString(7).equals("true"))
+//                    {
+//                        setVisible(false);
+//                        new  home().setVisible(true);
+//                    }
+//                    else 
+//                    {
+//                            JOptionPane.showMessageDialog(null, "Wait for Admin Approval");
+//                    }
+//                }
+//            }
+//            catch(Exception e) 
+//            {
+//                JOptionPane.showMessageDialog(null, e);
+//            }
+//                
+//        }
+        
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

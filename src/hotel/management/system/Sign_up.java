@@ -169,7 +169,12 @@ public class Sign_up extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
+    public boolean validateFields(String name, String email, String password, String securityQuestion, String answer, String address) {
+        return !(name.equals("") || email.equals("") || password.equals("") || securityQuestion.equals("") || answer.equals("") || address.equals(""));
+    }
+    
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String name=jTextField1.getText();
@@ -178,7 +183,7 @@ public class Sign_up extends javax.swing.JFrame {
         String securityQuestion=(String)jComboBox1.getSelectedItem();
         String answer=jTextField3.getText();
         String address=jTextField4.getText();
-        if(name.equals("")||email.equals("")||password.equals("")||securityQuestion.equals("")||answer.equals("")||address.equals("")){
+        if (!validateFields(name, email, password, securityQuestion, answer, address)) {
             JOptionPane.showMessageDialog(null, "Every field is required");
         }
         else{

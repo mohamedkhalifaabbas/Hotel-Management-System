@@ -241,7 +241,7 @@ public class CustomerCheckOut extends javax.swing.JFrame {
         
         try 
         {
-               ResultSet rs=Select.getData("select *from customer where roomNo='"+roomNo+"' and checkout is NULL");
+               ResultSet rs=Select.getData("select *from customer where roomNo='"+roomNo+"'");
 
                             if(rs.next())
                             
@@ -312,10 +312,13 @@ public class CustomerCheckOut extends javax.swing.JFrame {
         String numberOfDaysStay=jTextField7.getText();
         String totalAmount=jTextField8.getText();
         roomNo =jTextField1.getText();
+        
         Query ="update customer set numberOfDaysStay='"+numberOfDaysStay+"',totalAmount='"+totalAmount+"',checkOut='"+checkOut+"' where id='"+id+"'"; 
         InsertUpdateDelete.setData(Query, "");
-        Query ="update room set status='NOt booked' where roomNo='"+roomNo+"'";
+        Query ="update room set status='Not Booked' where roomNo='"+roomNo+"'";
         InsertUpdateDelete.setData(Query,"");
+        setVisible(false);
+        new CustomerCheckOut().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

@@ -41,10 +41,10 @@ public class CustomerCheckIn extends javax.swing.JFrame {
 public void roomDetails(){
     jComboBox4.removeAllItems();
     jTextField8.setText("");
-    bed=(String)jComboBox2.getSelectedItem();
-    roomType=(String)jComboBox3.getSelectedItem();
+    bed=(String)jComboBox3.getSelectedItem();
+    roomType=(String)jComboBox2.getSelectedItem();
     try{
-        ResultSet  rs =Select.getData("select * from room where bed='"+bed.strip()+"'and roomType='"+roomType.strip()+"'and status='Not Booked'");
+        ResultSet  rs =Select.getData("select * from room where bed='"+bed+"'and roomType='"+roomType+"'and status='Not Booked'");
         while(rs.next()){
             jComboBox4.addItem(rs.getString(1));
             
@@ -196,6 +196,11 @@ public void roomDetails(){
 
         jComboBox3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single", "Double", "Triple" }));
+        jComboBox3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox3MouseClicked(evt);
+            }
+        });
         jComboBox3.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 jComboBox3ComponentShown(evt);
@@ -288,6 +293,7 @@ public void roomDetails(){
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
+        
         roomDetails();
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
@@ -350,7 +356,7 @@ public void roomDetails(){
         // TODO add your handling code here:
         roomNo=(String)jComboBox4.getSelectedItem();
     try{
-        ResultSet  rs =Select.getData("select * from room where roomNO='"+roomNo+"");
+        ResultSet  rs =Select.getData("select * from room where roomNO='"+roomNo+"'");
         while(rs.next()){
             jTextField8.setText(rs.getString(4));
         }
@@ -367,6 +373,10 @@ public void roomDetails(){
         // TODO add your handling code here:
 
     }//GEN-LAST:event_jComboBox3ComponentShown
+
+    private void jComboBox3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3MouseClicked
 
     /**
      * @param args the command line arguments

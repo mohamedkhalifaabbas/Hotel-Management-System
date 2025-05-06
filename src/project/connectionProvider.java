@@ -18,7 +18,7 @@ public class connectionProvider {
             try
             {
               
-                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel" , "root" ,"");
+                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel" , "root" ,"Mkh@3032024M");
                 return con;
                 
                
